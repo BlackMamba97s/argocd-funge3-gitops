@@ -1,0 +1,18 @@
+
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: argocd-funge3-gitops
+  description: Contains the ArgoCD manifests for argocd-funge3
+  annotations:
+    argocd/app-name: argocd-funge3-gitops
+    backstage.io/kubernetes-id: argocd-funge3-gitops
+    backstage.io/techdocs-ref: dir:.
+    github.com/project-slug: BlackMamba97s/argocd-funge3-gitops
+spec:
+  type: gitops
+  system: argocd
+  lifecycle: production
+  owner: BlackMamba97
+  dependsOn:
+    - component:default/backstagedocs

@@ -1,0 +1,27 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: argocd-funge3
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: argocd-funge3
+  template:
+    metadata:
+      labels:
+        app: argocd-funge3
+        app.kubernetes.io/component: backstage
+        backstage.io/kubernetes-id: binco97-dev
+    spec:
+      containers:
+        - name: argocd-funge3
+          image: quay.io/quay.io/argoproj/argocd:v2.9.5/argocd-funge3:latest
+          ports:
+            - name: http-8080
+              containerPort: 8080
+              protocol: TCP
+          resources:
+            limits:
+              memory: '128Mi'
+              cpu: '500m'
